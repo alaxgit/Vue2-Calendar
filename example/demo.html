@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>vue2-calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <link rel="stylesheet" href="../lib/calendar.min.css?_t=20190402" />
+    <script src="../lib/calendar.js"></script>
+    <style>
+        .wp {
+            width: 700px;
+            margin: 0 auto;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h4 class="text-center">单日历</h4>
+        <div class="wp text-center">
+            <calendar v-model="value" show-date-only :disabled-days-of-week="disabled" :format="format" :clear-button="clear" :placeholder="placeholder" :lang="lang" :position="position" :on-day-click="dayClick" :pane="2">
+            </calendar>
+        </div>
+    </div>
+    <div id="app2">
+        <h4 class="text-center">双日历联动</h4>
+        <div class="wp text-center">
+            <calendar v-model="value" show-date-only :disabled-days-of-week="disabled" :format="format" :clear-button="clear" :placeholder="'起始时间'" :lang="lang" :position="position" :on-day-click="dayClick" :pane="1" :range-bus="getBus" :range-status="1"></calendar>
+            <calendar v-model="value2" show-date-only :disabled-days-of-week="disabled" :format="format" :clear-button="clear" :placeholder="'结束时间'" :lang="lang" :position="position" :on-day-click="dayClick" :pane="1" :range-bus="getBus" :range-status="2"></calendar>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: function() {
+                return {
+                    disabled: [], //禁用的日期
+                    value: new Date(), //值
+                    format: "yyyy-MM-dd", //文本框中显示的日期格式
+                    clear: false, //是否在文本框右侧显示清除按钮（X）
+                    placeholder: "日期", //水印
+                    position: "left", //日期面板位置，默认null和left 居左，right则靠右
+                    lang: "" //语言，默认中文，可选值：zh-CN、en
+                };
+            },
+            methods: {
+                //鼠标点击日历面板上的日期时的事件，
+                //传递的两个参数均是同一个值，只是类型不同，随便用哪个看个人需要
+                //date 是 Date 类型
+                //dateStr 是 String 类型
+                dayClick: function(date, dateStr) {
+                    console.log(date);
+                    console.log(dateStr);
+                    console.log(this.value);
+                }
+            },
+            components: {
+                calendar: Calendar
+            }
+        });
+        var app2 = new Vue({
+            el: "#app2",
+            data: function() {
+                return {
+                    disabled: [],
+                    value: new Date(),
+                    value2: new Date(),
+                    format: "yyyy-MM-dd",
+                    clear: false,
+                    placeholder: "Start Date",
+                    position: "left",
+                    lang: "",
+                    bus: new Vue()
+                };
+            },
+            methods: {
+                dayClick: function(date, dateStr) {
+                    console.log('value=' + this.value);
+                    console.log('value2=' + this.value2);
+                },
+                getBus: function() {
+                    return this.bus;
+                }
+            },
+            components: {
+                calendar: Calendar
+            }
+        });
+    </script>
+</body>
+
+</html>
