@@ -1,10 +1,16 @@
 # vue2-calendar
 
-> 基于Vue2的日历组件
+> 基于vue2.js 和 bootstrap.css 样式的日历控件。
+> 本人于2019.03.29在原 v2.2.4 版基础上作了优化，因此改版本号为 v2.2.5。
+> 改动内容：
+>   1.改进原控件无法切换语言的BUG，支持 lang='zh-CN'和'en'。
+>   2.日历面板增加一个位置选项，允许让面板右对齐，只需要position=right即可。
+>   3.原 :on-day-click 事件只有在 hasInput=false 时才生效，现改为一直有效，这样当用户点击日历面板上的日期后就可以触发该事件。
+>   4.clear=false时文本框右侧会显示一个日历图标，高仿bootstrap的日历组件，但clear=true时不显示
 
 <p align="center">
   <a href="http://blog.w3cub.com/vue2-calendar/?x-page=github">
-    Live Demo >>
+    官方 Demo >>
   </a>
   <br>
   <br>
@@ -45,13 +51,11 @@
   <br>
 </p>
 
-- This project is not only a vue component, but also a webpack **multi-page** project in action.
+- 这不仅是一个Vue组件，更是一个多页应用项目
 
-- Boostrap style like
+- Boostrap风格
 
-- I18n support
-
-- Community feedback
+- 多语言支持
 
 
 <h2>安装（需要node支持）</h2>
