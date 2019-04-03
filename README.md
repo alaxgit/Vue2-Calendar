@@ -1,6 +1,6 @@
 # vue2-calendar
 
-> vue 2 calendar, datepicker component which supported lunar or date event
+> ??Vue2?????
 
 <p align="center">
   <a href="http://blog.w3cub.com/vue2-calendar/?x-page=github">
@@ -54,18 +54,14 @@
 - Community feedback
 
 
-## Install
-
-```bash
-$ npm install vue2-slot-calendar
-```
-
-### Import using module
-
-```JavaScript
-
-
-// js file
+<h2>?????node???</h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash;gutter:true;">$ npm install vue2-slot-calendar
+</pre>
+</div>
+<h3>????</h3>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:true;">// js file
 import 'vue2-slot-calendar/lib/calendar.min.css';
 import calendar from 'vue2-slot-calendar/lib/calendar';
 
@@ -78,180 +74,200 @@ const Calendar = require('vue2-slot-calendar');
 
 // in Global variable
 const VueCalendar = Calendar;
-```
-
-### Import using script tag
-
-```HTML
-
-<link rel="stylesheet" href="../node_modules/vue2-slot-calendar/lib/calendar.min.css" >
-<script src="../node_modules/vue2-slot-calendar/lib/calendar.min.js"></script>
-```
-
-Also see the demo file, `example/demo.html`
-
-
-## I18n support
-
-currently, provide `window.VueCalendarLang` function hook to change your lang
-
-
-```js
-  translations(lang) {
-    lang = lang || "en";
-    let text = {
-      daysOfWeek: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-      limit: "Limit reached ({{limit}} items max).",
-      loading: "Loading...",
-      minLength: "Min. Length",
-      months: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ],
-      notSelected: "Nothing Selected",
-      required: "Required",
-      search: "Search"
-    };
-    return window.VueCalendarLang ? window.VueCalendarLang(lang) : text;
-  },
-```
-
-
-## Build Setup
-
-```bash
-# install dependencies
+</pre>
+</div>
+<h3>????????js??????</h3>
+<div class="cnblogs_Highlighter">
+<pre class="brush:html;gutter:true;">&lt;link rel="stylesheet" href="/lib/calendar.min.css" &gt;
+&lt;script src="/lib/calendar.min.js"&gt;&lt;/script&gt;
+</pre>
+</div>
+<h2>?????</h2>
+<p>????<span style="background-color: #ffff00; color: #0000ff;">window.VueCalendarLang </span>??????????????</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:true;">window.VueCalendarLang=function(lang){
+    return {}; //???????JSON?? 
+};
+</pre>
+</div>
+<p>?????????????????JSON???</p>
+<p>?????? /src/lang/zh-CN.js ??</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:true;">{
+    daysOfWeek: ["?", "?", "?", "?", "?", "?", "?"],
+    limit: "???? (??{{limit}}?)",
+    loading: "???...",
+    minLength: "????",
+    months: [
+        "??",
+        "??",
+        "??",
+        "??",
+        "??",
+        "??",
+        "??",
+        "??",
+        "??",
+        "??",
+        "??",
+        "??"
+    ],
+    notSelected: "???",
+    required: "???",
+    search: "??"
+}
+</pre>
+</div>
+<p>??</p>
+<h2>????</h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:bash;gutter:true;"># ????
 npm install
 
-# serve with hot reload at localhost:4000
+# ??????? localhost:4000
 npm run dev
 
-# build for production with minification
+# ?????JS?CSS??
 npm run build
 
-# run unit tests
+# ????
 npm run unit
 
-# run all tests
+# ??????
 npm test
-```
-
-## Screenshot
-
-![](https://raw.githubusercontent.com/icai/vue2-calendar/master/src/assets/demo.gif?1477232397)
-
-## Usage
-
-```html
-<calendar
-  :value="value"
-  :disabled-days-of-week="disabled"
-  :format="format"
-  :clear-button="clear"
-  :placeholder="placeholder"
-  :pane="2"
-  :has-input="false"
-  :on-day-click="onDayClick2"
-  :special-days="_dateMap"
-></calendar>
-```
-
-### Use slot to render async data
-
-```html
-<calendar
-  class="event-calendar"
-  :value="value"
-  :disabled-days-of-week="disabled"
-  :format="format"
-  :clear-button="clear"
-  :placeholder="placeholder"
-  :pane="2"
-  :has-input="false"
-  :on-day-click="onDayClick3"
-  :change-pane="changePane"
->
-  <div v-for="evt in events" :slot="evt.date">
-    ${{evt.content}} <i :class="{low : evt.low}" v-if="evt.low">↓</i>
-  </div>
-</calendar>
-```
-
-### Range Hover Status
-
-```html
-<calendar
-  :value="value"
-  :disabled-days-of-week="disabled"
-  :format="format"
-  :clear-button="clear"
-  :placeholder="placeholder"
-  :pane="2"
-  :range-bus="getBus"
-  :range-status="1"
-></calendar>
-
-<calendar
-  :value="value"
-  :disabled-days-of-week="disabled"
-  :format="format"
-  :clear-button="clear"
-  :placeholder="placeholder"
-  :pane="2"
-  :range-bus="getBus"
-  :range-status="2"
-></calendar>
-```
-
-### Props
-
-Options/Props
-
-| Name                  | Type       | Default        | Description                                                                                                                 |
-| --------------------- | ---------- | -------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| value                 | `String`   | ''             | Value of the input DOM                                                                                                      |
-| width                 | `String`   | '200px'        | Width of the input DOM                                                                                                      |
-| format                | `String`   | `MMMM/dd/yyyy` | The date format, combination of d, dd, M, MM, MMM, MMMM, yyyy.                                                              |
-| disabled-days-of-week | `Array`    |                | Days of the week that should be disabled. Values are 0 (Sunday) to 6 (Saturday). Multiple values should be comma-separated. |
-| clear-button          | `Bollean`  | false          | If true shows an × shaped button to clear the selected date. Usefull in forms where date entry is optional.                 |
-| placeholder           | `String`   |                | Placeholder to put on the input field when no date (null or empty) is set                                                   |
-| hasInput              | `Boolean`  | true           | Default is has-input style, if don't have input will show pane directly                                                     |
-| pane                  | `Number`   | 1              | pane count                                                                                                                  |
-| borderWidth           | `Number`   | 2              | This value is for calculating the pane width                                                                                |
-| onDayClick            | `Function` |                | Only for `hasInput` set false                                                                                               |
-| specialDays           | `Object`   |                | To repalce the day text                                                                                                     |
-| changePane            | `Function` |                | For pane change parameter (year, month, pane) month[0,11], demo `/src/modules/Docs.vue`                                     |
-| rangeBus              | `Function` |                | should return `new Vue()` as sibling component communication events bus                                                     |
-| rangeStatus           | `Number`   | 0              | Default is `disabled` range hover effect, currently only support [0,1,2] `1` will communicate with `2`                      |
-| onDrawDate            | `Function` |                | DrawDate Function `allowSelect` to update date cell style                                                                   |
-| showDateOnly          | `Boolean`  | false          | show date pane only                                                                                                         |
-| transfer              | `Boolean`  | false          | transfer popup to `document.body`                                                                                           |
-| elementId             | `String`   |                | elementId for label tag `for` attribute                                                                                     |
-| firstDayOfWeek        | `Number`   | 0              | first day of the week, default sunday, [0,6]                                                                                |
-
-### Events
-
-| Name     | Description                      |
-| -------- | -------------------------------- |
-| drawdate | drawdate Event like `onDrawDate` |
-
-```javascript
-  props: {
+</pre>
+</div>
+<h3>?????</h3>
+<p>&nbsp;</p>
+<table style="height: 447px; width: 1092px;">
+<thead>
+<tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td><code>String</code></td>
+<td>''</td>
+<td>?????????? v-model ??</td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>String</code></td>
+<td>'200px'</td>
+<td>input??????</td>
+</tr>
+<tr>
+<td>format</td>
+<td><code>String</code></td>
+<td><code>yyyy-MM-dd</code></td>
+<td>????,???? d, dd, M, MM, MMM, MMMM, yyyy.</td>
+</tr>
+<tr>
+<td>disabled-days-of-week</td>
+<td><code>Array</code></td>
+<td>&nbsp;</td>
+<td>????????????0-6??????????</td>
+</tr>
+<tr>
+<td>clear-button</td>
+<td><code>Bollean</code></td>
+<td>false</td>
+<td>??????????????????????????????????????????</td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td><code>String</code></td>
+<td>&nbsp;</td>
+<td>?????????</td>
+</tr>
+<tr>
+<td>hasInput</td>
+<td><code>Boolean</code></td>
+<td>true</td>
+<td>???????</td>
+</tr>
+<tr>
+<td>pane</td>
+<td><code>Number</code></td>
+<td>1</td>
+<td>?????????1???????2????????1?2</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td><code>Number</code></td>
+<td>2</td>
+<td>?????????</td>
+</tr>
+<tr>
+<td><span style="color: #0000ff;">onDayClick</span></td>
+<td><span style="color: #0000ff;"><code>Function</code></span></td>
+<td><span style="color: #0000ff;">&nbsp;</span></td>
+<td><span style="color: #0000ff;">??????????????hasInput?????????</span></td>
+</tr>
+<tr>
+<td>specialDays</td>
+<td><code>Object</code></td>
+<td>&nbsp;</td>
+<td>????</td>
+</tr>
+<tr>
+<td>changePane</td>
+<td><code>Function</code></td>
+<td>&nbsp;</td>
+<td>??????????, ??????????????????????&nbsp;&nbsp;<code>/src/modules/Docs.vue</code></td>
+</tr>
+<tr>
+<td>rangeBus</td>
+<td><code>Function</code></td>
+<td>&nbsp;</td>
+<td>???????????????? new Vue() ???</td>
+</tr>
+<tr>
+<td>rangeStatus</td>
+<td><code>Number</code></td>
+<td>0</td>
+<td>?????????0??????????1?????????????2????????????</td>
+</tr>
+<tr>
+<td>onDrawDate</td>
+<td><code>Function</code></td>
+<td>&nbsp;</td>
+<td>?????????????????????</td>
+</tr>
+<tr>
+<td>showDateOnly</td>
+<td><code>Boolean</code></td>
+<td>false</td>
+<td>?????????</td>
+</tr>
+<tr>
+<td>transfer</td>
+<td><code>Boolean</code></td>
+<td>false</td>
+<td>?????????? document.body?</td>
+</tr>
+<tr>
+<td>elementId</td>
+<td><code>String</code></td>
+<td>&nbsp;</td>
+<td>??ID</td>
+</tr>
+<tr>
+<td>firstDayOfWeek</td>
+<td><code>Number</code></td>
+<td>0</td>
+<td>???1??0??????1????????????</td>
+</tr>
+</tbody>
+</table>
+<h3 class="prettyprint prettyprinted"><br />????????</h3>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:true;">props: {
     value: {
       type: [String, Date]
     },
     format: {
-      default: 'MM/dd/yyyy'
+      default: 'yyyy-MM-dd'
     },
     firstDayOfWeek: {
       // sunday
@@ -338,8 +354,8 @@ Options/Props
     },
     elementId: [String]
   }
-```
-
+</pre>
+</div>
 ## Credits
 
 Inspired by [vue-strap](https://github.com/yuche/vue-strap) datepicker component.
