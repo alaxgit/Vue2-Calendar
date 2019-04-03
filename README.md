@@ -1,6 +1,6 @@
 # vue2-calendar
 
-> ??Vue2?????
+> 基于Vue2的日历组件
 
 <p align="center">
   <a href="http://blog.w3cub.com/vue2-calendar/?x-page=github">
@@ -54,12 +54,12 @@
 - Community feedback
 
 
-<h2>?????node???</h2>
+<h2>安装（需要node支持）</h2>
 <div class="cnblogs_Highlighter">
 <pre class="brush:bash;gutter:true;">$ npm install vue2-slot-calendar
 </pre>
 </div>
-<h3>????</h3>
+<h3>导入模块</h3>
 <div class="cnblogs_Highlighter">
 <pre class="brush:javascript;gutter:true;">// js file
 import 'vue2-slot-calendar/lib/calendar.min.css';
@@ -76,68 +76,68 @@ const Calendar = require('vue2-slot-calendar');
 const VueCalendar = Calendar;
 </pre>
 </div>
-<h3>????????js??????</h3>
+<h3>直接引用编译好的js文件（推荐）</h3>
 <div class="cnblogs_Highlighter">
 <pre class="brush:html;gutter:true;">&lt;link rel="stylesheet" href="/lib/calendar.min.css" &gt;
 &lt;script src="/lib/calendar.min.js"&gt;&lt;/script&gt;
 </pre>
 </div>
-<h2>?????</h2>
-<p>????<span style="background-color: #ffff00; color: #0000ff;">window.VueCalendarLang </span>??????????????</p>
+<h2>多语言支持</h2>
+<p>系统提供<span style="background-color: #ffff00; color: #0000ff;">window.VueCalendarLang </span>勾子函数来让用户自定义语言，</p>
 <div class="cnblogs_Highlighter">
 <pre class="brush:javascript;gutter:true;">window.VueCalendarLang=function(lang){
-    return {}; //???????JSON?? 
+    return {}; //对象必须是下面JSON格式 
 };
 </pre>
 </div>
-<p>?????????????????JSON???</p>
-<p>?????? /src/lang/zh-CN.js ??</p>
+<p>上面勾子函数返回的必须是下面格式的JSON对象。</p>
+<p>下面的脚本在 /src/lang/zh-CN.js 中有</p>
 <div class="cnblogs_Highlighter">
 <pre class="brush:javascript;gutter:true;">{
-    daysOfWeek: ["?", "?", "?", "?", "?", "?", "?"],
-    limit: "???? (??{{limit}}?)",
-    loading: "???...",
-    minLength: "????",
+    daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
+    limit: "超过限制 (最多{{limit}}项)",
+    loading: "加载中...",
+    minLength: "最小长度",
     months: [
-        "??",
-        "??",
-        "??",
-        "??",
-        "??",
-        "??",
-        "??",
-        "??",
-        "??",
-        "??",
-        "??",
-        "??"
+        "一月",
+        "二月",
+        "三月",
+        "四月",
+        "五月",
+        "六月",
+        "七月",
+        "八月",
+        "九月",
+        "十月",
+        "十一",
+        "十二"
     ],
-    notSelected: "???",
-    required: "???",
-    search: "??"
+    notSelected: "未选择",
+    required: "必填项",
+    search: "查找"
 }
 </pre>
 </div>
-<p>??</p>
-<h2>????</h2>
+<p>　　</p>
+<h2>构建步骤</h2>
 <div class="cnblogs_Highlighter">
-<pre class="brush:bash;gutter:true;"># ????
+<pre class="brush:bash;gutter:true;"># 安装依赖
 npm install
 
-# ??????? localhost:4000
+# 运行开发服务器 localhost:4000
 npm run dev
 
-# ?????JS?CSS??
+# 编译（压缩JS和CSS等）
 npm run build
 
-# ????
+# 单元测试
 npm run unit
 
-# ??????
+# 运行所有测试
 npm test
 </pre>
 </div>
-<h3>?????</h3>
+<h3>参数和事件</h3>
 <p>&nbsp;</p>
 <table style="height: 447px; width: 1092px;">
 <thead>
@@ -148,119 +148,119 @@ npm test
 <td>value</td>
 <td><code>String</code></td>
 <td>''</td>
-<td>?????????? v-model ??</td>
+<td>组件输入输出的值，即 v-model 的值</td>
 </tr>
 <tr>
 <td>width</td>
 <td><code>String</code></td>
 <td>'200px'</td>
-<td>input??????</td>
+<td>input文本框的宽度</td>
 </tr>
 <tr>
 <td>format</td>
 <td><code>String</code></td>
 <td><code>yyyy-MM-dd</code></td>
-<td>????,???? d, dd, M, MM, MMM, MMMM, yyyy.</td>
+<td>日期格式,可用值： d, dd, M, MM, MMM, MMMM, yyyy.</td>
 </tr>
 <tr>
 <td>disabled-days-of-week</td>
 <td><code>Array</code></td>
 <td>&nbsp;</td>
-<td>????????????0-6??????????</td>
+<td>每周有哪些天禁用，可用值0-6，多个值则用逗号隔开</td>
 </tr>
 <tr>
 <td>clear-button</td>
 <td><code>Bollean</code></td>
 <td>false</td>
-<td>??????????????????????????????????????????</td>
+<td>是否显示清除按钮，显示清除按钮时右侧的日历图标不显示，不显示清除按钮时则显示日历图标</td>
 </tr>
 <tr>
 <td>placeholder</td>
 <td><code>String</code></td>
 <td>&nbsp;</td>
-<td>?????????</td>
+<td>文本框中显示的水印</td>
 </tr>
 <tr>
 <td>hasInput</td>
 <td><code>Boolean</code></td>
 <td>true</td>
-<td>???????</td>
+<td>是否显示文本框</td>
 </tr>
 <tr>
 <td>pane</td>
 <td><code>Number</code></td>
 <td>1</td>
-<td>?????????1???????2????????1?2</td>
+<td>日历面板数量，默认1，双月日历设为2即可，目前仅支持1和2</td>
 </tr>
 <tr>
 <td>borderWidth</td>
 <td><code>Number</code></td>
 <td>2</td>
-<td>?????????</td>
+<td>日历面板边框线宽度</td>
 </tr>
 <tr>
 <td><span style="color: #0000ff;">onDayClick</span></td>
 <td><span style="color: #0000ff;"><code>Function</code></span></td>
 <td><span style="color: #0000ff;">&nbsp;</span></td>
-<td><span style="color: #0000ff;">??????????????hasInput?????????</span></td>
+<td><span style="color: #0000ff;">点击日期时的事件，已改为不受hasInput值的限制，总是触发</span></td>
 </tr>
 <tr>
 <td>specialDays</td>
 <td><code>Object</code></td>
 <td>&nbsp;</td>
-<td>????</td>
+<td>特殊日期</td>
 </tr>
 <tr>
 <td>changePane</td>
 <td><code>Function</code></td>
 <td>&nbsp;</td>
-<td>??????????, ??????????????????????&nbsp;&nbsp;<code>/src/modules/Docs.vue</code></td>
+<td>切换日历面板时的事件, 暂时还没研究这个，大多数情况下用不到，请参考&nbsp;&nbsp;<code>/src/modules/Docs.vue</code></td>
 </tr>
 <tr>
 <td>rangeBus</td>
 <td><code>Function</code></td>
 <td>&nbsp;</td>
-<td>???????????????? new Vue() ???</td>
+<td>暂时不明白啥意思，请总是返回一个 new Vue() 就对了</td>
 </tr>
 <tr>
 <td>rangeStatus</td>
 <td><code>Number</code></td>
 <td>0</td>
-<td>?????????0??????????1?????????????2????????????</td>
+<td>日期范围状态，默认0表示不使用日期范围，1表示双日历联动的起始日期，2表示双日历联动的结束日期</td>
 </tr>
 <tr>
 <td>onDrawDate</td>
 <td><code>Function</code></td>
 <td>&nbsp;</td>
-<td>?????????????????????</td>
+<td>绘制日期时的事件，可以让用户自定义日历样式</td>
 </tr>
 <tr>
 <td>showDateOnly</td>
 <td><code>Boolean</code></td>
 <td>false</td>
-<td>?????????</td>
+<td>是否只显示日历面板</td>
 </tr>
 <tr>
 <td>transfer</td>
 <td><code>Boolean</code></td>
 <td>false</td>
-<td>?????????? document.body?</td>
+<td>是否将日历面板添加到 document.body中</td>
 </tr>
 <tr>
 <td>elementId</td>
 <td><code>String</code></td>
 <td>&nbsp;</td>
-<td>??ID</td>
+<td>日历ID</td>
 </tr>
 <tr>
 <td>firstDayOfWeek</td>
 <td><code>Number</code></td>
 <td>0</td>
-<td>???1??0??????1????????????</td>
+<td>每周第1天，0表示星期天，1表示星期一，其它依次类推</td>
 </tr>
 </tbody>
 </table>
-<h3 class="prettyprint prettyprinted"><br />????????</h3>
+<h3 class="prettyprint prettyprinted"><br />组件的所有属性值</h3>
 <div class="cnblogs_Highlighter">
 <pre class="brush:javascript;gutter:true;">props: {
     value: {
