@@ -24,8 +24,8 @@ export default {
       disabled: [],
       value: new Date(),
       format: 'yyyy-MM-dd',
-      clear: true,
-      placeholder: 'placeholder is displayed when value is null or empty'
+      clear: false,
+      placeholder: '日期'
     }
   },
   components: {

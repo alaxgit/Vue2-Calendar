@@ -2,10 +2,9 @@
   <div class="hello">
     <h1>{{ message }}</h1>
     <div v-if="link">
-      <h2>Essential Links</h2>
       <ul>
         <li><a href="./demo/" >Demo</a></li>
-        <li><a href="https://github.com/icai/vue2-calendar/" target="_blank">Github</a></li>
+        <li><a href="https://github.com/alaxgit/Vue2-Calendar/" target="_blank">Github</a></li>
       </ul>
     </div>
 
@@ -18,7 +17,7 @@ export default {
   props: ['msg', 'showLink'],
   data () {
     return {
-      message: this.msg || 'Welcome to Vue Calendar Component',
+      message: this.msg || '欢迎使用Vue2-Calendar',
       link: this.showLink || false
     }
   }

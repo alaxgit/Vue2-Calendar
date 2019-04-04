@@ -878,7 +878,7 @@ export default {
 <style lang="css">/*!
  * vue2-calendar v2.2.5
  * (c) 2019 Alax <76299199@qq.com>
- * https://github.com/icai/vue2-calendar#readme
+ * https://github.com/alaxgit/Vue2-Calendar#readme
  */
 .datepicker {
   font-size: 14px;
