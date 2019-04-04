@@ -101,7 +101,7 @@ npm test
 </div>
 <h3>参数和事件</h3>
 <p>&nbsp;</p>
-<table style="height: 447px; width: 1092px;">
+<table style=" width: 100%;">
 <thead>
 <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
 </thead>
